@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  :root,
+  [data-theme="dark"] {
+    --cosmic-bg: #070614;
+    --cosmic-surface: #0f0d24;
+    --cosmic-card: rgba(18, 15, 42, 0.72);
+    --tl-bg: #070614;
+    --tl-surface: #0f0d24;
+    --tl-surface-elevated: rgba(18, 15, 42, 0.84);
+    --tl-surface-muted: rgba(255, 255, 255, 0.04);
+    --tl-border: rgba(139, 92, 246, 0.22);
+    --tl-border-subtle: rgba(255, 255, 255, 0.1);
+    --tl-text: #f1f5f9;
+    --tl-text-secondary: #cbd5e1;
+    --tl-text-muted: #94a3b8;
+    --violet-accent: #8b5cf6;
+    --fuchsia-accent: #ec4899;
+    --cyber-sky: #38bdf8;
+    --tl-shadow-card: 0 20px 50px -24px rgba(7, 6, 20, 0.85);
+    --tl-scroll-track: rgba(7, 6, 20, 0.8);
+    --tl-scroll-thumb: rgba(139, 92, 246, 0.35);
+    --tl-scroll-thumb-hover: rgba(236, 72, 153, 0.55);
+  }
+
+  [data-theme="light"] {
+    --cosmic-bg: #f7f6fc;
+    --cosmic-surface: #ffffff;
+    --cosmic-card: rgba(255, 255, 255, 0.88);
+    --tl-bg: #f7f6fc;
+    --tl-surface: #ffffff;
+    --tl-surface-elevated: rgba(255, 255, 255, 0.94);
+    --tl-surface-muted: #f1effa;
+    --tl-border: rgba(15, 23, 42, 0.09);
+    --tl-border-subtle: rgba(15, 23, 42, 0.08);
+    --tl-text: #0f172a;
+    --tl-text-secondary: #334155;
+    --tl-text-muted: #64748b;
+    --violet-accent: #7c3aed;
+    --fuchsia-accent: #db2777;
+    --cyber-sky: #0284c7;
+    --tl-shadow-card: 0 10px 30px -12px rgba(15, 23, 42, 0.08),
+      0 1px 2px rgba(15, 23, 42, 0.04);
+    --tl-scroll-track: #eeecf7;
+    --tl-scroll-thumb: rgba(124, 58, 237, 0.28);
+    --tl-scroll-thumb-hover: rgba(219, 39, 119, 0.48);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--tl-bg);
+    color: var(--tl-text);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 220ms ease, color 220ms ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: "Outfit", "Inter", system-ui, sans-serif;
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+}
+
+/* Cosmic & Editorial Glass Utilities */
+.glass-panel {
+  background: linear-gradient(
+    145deg,
+    rgba(22, 18, 52, 0.78) 0%,
+    rgba(11, 9, 28, 0.88) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.22);
+}
+
+[data-theme="light"] .glass-panel {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(248, 247, 254, 0.9) 100%
+  );
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  box-shadow: 0 12px 34px -14px rgba(15, 23, 42, 0.09),
+    0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.cosmic-grid {
+  background-image:
+    linear-gradient(to right, rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+[data-theme="light"] .cosmic-grid {
+  background-image:
+    linear-gradient(to right, rgba(124, 58, 237, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.055) 1px, transparent 1px);
+}
+
+/* Editorial Studio Light Mode Comprehensive Token Overrides
+   Preserves crisp white text on solid/gradient CTA buttons & badges via .cta-solid or gradient rules */
+[data-theme="light"] .tl-surface-card {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(15, 23, 42, 0.09);
+  box-shadow: 0 8px 26px -12px rgba(15, 23, 42, 0.08),
+    0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .tl-surface-well {
+  background-color: #f3f1fa;
+  border-color: rgba(15, 23, 42, 0.09);
+}
+
+[data-theme="light"] .tl-input {
+  background-color: #ffffff;
+  border-color: rgba(15, 23, 42, 0.14);
+  color: #0f172a;
+}
+
+[data-theme="light"] .tl-input::placeholder {
+  color: #94a3b8;
+}
+
+[data-theme="light"] .tl-input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.14);
+}
+
+/* Marquee animation for Trusted-By Talent Teams */
+@keyframes tl-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tl-marquee {
+  display: flex;
+  width: max-content;
+  animation: tl-marquee 30s linear infinite;
+}
+
+.animate-tl-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ReactBits Keyframes */
+@keyframes shiny-sweep {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-shiny-text {
+  background-size: 250% auto;
+  animation: shiny-sweep 4.2s linear infinite;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-flow {
+  background-size: 260% 260%;
+  animation: gradient-flow 6s ease infinite;
+}
+
+@keyframes star-orbit-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-orbit-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes border-beam-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam-spin var(--beam-duration, 7s) linear infinite;
+}
+
+/* Custom sleek theme-aware scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tl-scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tl-scroll-thumb);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tl-scroll-thumb-hover);
+}
